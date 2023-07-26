@@ -11,7 +11,7 @@ function getComputerChoice() {
 function getPlayerChoice() {
   let playerChoice = prompt("Enter 'rock', 'paper' or 'scissor' to begin game:").toLowerCase();
   //Ensuring the player can only enter the game choices. 
-  if (GAME_CHOICES.indexOf(playerChoice) >= 0) {
+  if (GAME_CHOICES.includes(playerChoice)) {
     return playerChoice;
   } else {
     alert("Please enter 'rock', 'paper' or 'scissor' only.");
