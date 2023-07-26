@@ -7,10 +7,16 @@ function getComputerChoice() {
   return GAME_CHOICES[computerChoice];
 }
 
-// Prompt user to choose one of the game choices.
+// Prompt player to choose one of the game choices.
 function getPlayerChoice() {
   let playerChoice = prompt("Enter 'rock', 'paper' or 'scissor' to begin game:").toLowerCase();
-  return playerChoice;
+  //Ensuring the player can only enter the game choices. 
+  if (GAME_CHOICES.indexOf(playerChoice) >= 0) {
+    return playerChoice;
+  } else {
+    alert("Please enter 'rock', 'paper' or 'scissor' only.");
+    return getPlayerChoice();
+  }
 }
   
 // Plays one round of the game, check the outcome, return the outcome text and scores in array.
