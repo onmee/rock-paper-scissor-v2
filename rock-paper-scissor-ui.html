@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <script src="rock-paper-scissor.js" defer></script>
     <title>Rock Paper Scissors</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Bungee+Spice" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -20,11 +19,26 @@
         <div class="content">
             <div id="cta">Make a choice to start the game. Good luck! &#x1F91E</div>
             <div class="choice-btns">
-                <button>Rock</button>
-                <button>Paper</button>
-                <button>Scissor</button>
+                <button class="pushable"><span class="front">Rock</span></button>
+                <button class="pushable"><span class="front">Paper</span></button>
+
+                <button class="pushable"><span class="front">Scissor</span></button>
+
             </div>
-            <div class="game-output">game tracking</div>
+            <div class="game-output">
+                <div class="result-card">
+                    <div id="result-header">Computer</div>
+                    <div>Rock</div>
+                </div>
+                <div class="result-card">
+                    <div id="result-header">Result</div>
+                    <div>Rock beats paper. Computer wins!</div>
+                </div>
+                <div class="result-card">
+                    <div id="result-header">Score</div>
+                    <div>You: 5 | Computer: 0</div>
+                </div>
+            </div>
             <div class="final-outcome">final outcome</div>
         </div>
     </div>
