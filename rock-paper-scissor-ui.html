@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <script src="rock-paper-scissor.js" defer></script>
+    <script src="rock-paper-scissor-ui.js" defer></script>
     <title>Rock Paper Scissors</title>
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -10,10 +10,7 @@
 <body>
     <header>
         <h1>Rock Paper Scissor</h1>
-        <h2>Rock > Paper &nbsp;&nbsp;|&nbsp;&nbsp; Paper > Rock &nbsp;&nbsp;|&nbsp;&nbsp; 
-            Scissor > Paper</h2>
-        <h2>5 Rounds &nbsp;&nbsp;|&nbsp;&nbsp; Three choices &nbsp;&nbsp;|&nbsp;&nbsp; 
-            One winner!</h2>
+        <h2>5 Rounds &nbsp;&nbsp;|&nbsp;&nbsp; Three choices &nbsp;&nbsp;|&nbsp;&nbsp; One winner!</h2>
         </header>
     <div class="container">
         <div class="content">
@@ -21,9 +18,7 @@
             <div class="choice-btns">
                 <button class="pushable"><span class="front">Rock</span></button>
                 <button class="pushable"><span class="front">Paper</span></button>
-
                 <button class="pushable"><span class="front">Scissor</span></button>
-
             </div>
             <div class="game-output">
                 <div class="result-card">
@@ -36,7 +31,10 @@
                 </div>
                 <div class="result-card">
                     <div id="result-header">Score</div>
-                    <div>You: 5 | Computer: 0</div>
+                    <div>
+                        <div>You &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :</div>
+                        <div>Computer:</div>
+                    </div>
                 </div>
             </div>
             <div class="final-outcome">final outcome</div>
