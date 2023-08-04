@@ -13,15 +13,26 @@ const choiceBtns = document.querySelectorAll(".choice-btns button");
 choiceBtns.forEach((btn => btn.addEventListener('click', btn => {
   let playerChoice = btn.target.textContent.toLowerCase();
   playRound(playerChoice, getComputerChoice());
-  console.log(scores)
-})))
 
+  // Update the text and values for the 'Result' and Score cards respectively.
+  const resultOutput = document.getElementById('result-output');
+  resultOutput.textContent = scores.Result;
+
+  /*const playerScore = document.getElementById('player-score');
+  playerScore.textContent = playerScore.textContent.concat(scores.Player);*/
+})))
 
 // Plays one round of the game, check the outcome, return the outcome text and scores in array.
 // Replayed if both players have the same choice, as only wins are counted.
 function playRound(player, computer) {
+
+  // Update the text in the 'Computer' card.
+  const compOutput = document.getElementById('computer-choice');
+  compOutput.textContent = computer.toUpperCase();
+
   if (player == computer) {
-    alert(`Both chose ${computer}, replay round`);
+    // Alert dialog box delayed by 2s so that computer card is updated first. 
+    setTimeout(function() {alert(`Both chose ${computer}, replay round`);}, 2);
     return;
   }
   else if (computer == 'rock' && player == 'scissor') {
