@@ -1,6 +1,6 @@
 
 const GAME_CHOICES = ['rock', 'paper', 'scissor'];
-const scores =  {Player: 0, Computer: 0};
+const scores =  {Player: 0, Computer: 0, Result: ''};
 
 // Randomly returns 'Rock', 'Paper' or 'Scissor' for the computer.
 function getComputerChoice() {
@@ -20,33 +20,27 @@ choiceBtns.forEach((btn => btn.addEventListener('click', btn => {
 // Plays one round of the game, check the outcome, return the outcome text and scores in array.
 // Replayed if both players have the same choice, as only wins are counted.
 function playRound(player, computer) {
-  console.log(player, computer)
   if (player == computer) {
     alert(`Both chose ${computer}, replay round`);
     return;
   }
   else if (computer == 'rock' && player == 'scissor') {
-    ++ scores.Computer;
-    return "Computer won as rock beats scissor"
+    ++ scores.Computer; scores.Result = 'Rock beats scissor. Computer wins!';
+    return 
   }
   else if (computer == 'rock' && player == 'paper') {
-    ++ scores.Player;
-    return "You win as paper beats rock";
+    ++ scores.Player; scores.Result = 'Paper beats rock. You win!!';
   }
   else if (computer == 'scissor' && player == 'rock') {
-    ++ scores.Player;
-    return "You win as rock beats scissor";
+    ++ scores.Player; scores.Result = 'Rock beats scissor. You win!!';
   }
   else if (computer == 'scissor' && player == 'paper') {
-    ++ scores.Computer;
-    return "Computer won as scissor beats paper";
+    ++ scores.Computer; scores.Result = 'Scissor beats paper. Computer wins!';
   }
   else if (computer == 'paper' &&  player == 'scissor') {
-    ++ scores.Player;
-    return "You won as scissor beats paper";
+    ++ scores.Player; scores.Result = 'Scissor beats paper. You win!!';
   }
   else if (computer == 'paper' &&  player == 'rock') {
-    ++ scores.Computer;
-    return "Computer won as paper beats rock";
+    ++ scores.Computer; scores.Result = 'Paper beats rock. Computer wins!';
   }
 }
