@@ -18,8 +18,12 @@ choiceBtns.forEach((btn => btn.addEventListener('click', btn => {
   const resultOutput = document.getElementById('result-output');
   resultOutput.textContent = scores.Result;
 
-  /*const playerScore = document.getElementById('player-score');
-  playerScore.textContent = playerScore.textContent.concat(scores.Player);*/
+  const playerScore = document.getElementById('player-score');
+  playerScore.textContent = `${scores.Player}`;
+
+  const computerScore = document.getElementById('computer-score');
+  computerScore.textContent = `${scores.Computer}`;
+  
 })))
 
 // Plays one round of the game, check the outcome, return the outcome text and scores in array.
