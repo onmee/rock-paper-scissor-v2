@@ -23,8 +23,25 @@ choiceBtns.forEach((btn => btn.addEventListener('click', btn => {
 
   const computerScore = document.getElementById('computer-score');
   computerScore.textContent = `${scores.Computer}`;
+
+  runGame();
   
 })))
+
+
+// Run the game until 5 rounds and then display the relevant message, alongside a reset button.
+
+function runGame() {
+  if (scores.Player == 5) {
+    const winMessage = document.getElementById('winner');
+    winMessage.textContent = 'Congratulations! \u{1F91D} You\'ve won!! \u{1F947}';
+  }
+  else if (scores.Computer == 5) {
+    const winMessage = document.getElementById('winner');
+    winMessage.textContent = 'Commiserations. You\'ve lost \u{1F641}';
+  }
+  return
+}
 
 // Plays one round of the game, check the outcome, return the outcome text and scores in array.
 // Replayed if both players have the same choice, as only wins are counted.
