@@ -91,7 +91,13 @@ h2 {
     color: white;
     padding: 14px;
     border-radius: 12px;
-    font-size: 20px;
+    font-size: 18px;
+}
+
+#result-header {
+    font-family: 'Bungee Spice', cursive;
+    font-size: 18px;
+    padding-bottom: 12px;
 }
 
 .final-outcome {
@@ -104,8 +110,10 @@ h2 {
     border-radius: 12px;
 }
 
-#result-header {
+#winner {
     font-family: 'Bungee Spice', cursive;
-    font-size: 18px;
-    padding-bottom: 12px;
+    font-size: 24px;
+}
+#reset {
+    float: right;
 }
