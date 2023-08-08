@@ -1,6 +1,6 @@
 
 const GAME_CHOICES = ['rock', 'paper', 'scissor'];
-const scores =  {Player: 0, Computer: 0, Result: ''};
+const gameData =  {playerChoice: '', Player: 0, Computer: 0, Result: ''};
 
 // Randomly returns 'Rock', 'Paper' or 'Scissor' for the computer.
 function getComputerChoice() {
@@ -10,38 +10,64 @@ function getComputerChoice() {
 
 // Event listener for each of the choice buttons.
 const choiceBtns = document.querySelectorAll(".choice-btns button");
-choiceBtns.forEach((btn => btn.addEventListener('click', btn => {
-  let playerChoice = btn.target.textContent.toLowerCase();
-  playRound(playerChoice, getComputerChoice());
 
-  // Update the text and values for the 'Result' and Score cards respectively.
-  const resultOutput = document.getElementById('result-output');
-  resultOutput.textContent = scores.Result;
+choiceBtns.forEach(btn => btn.addEventListener('click', onClick));
 
-  const playerScore = document.getElementById('player-score');
-  playerScore.textContent = `${scores.Player}`;
+function onClick(btn) {
+  gameData.playerChoice = btn.target.textContent.toLowerCase();
+  //console.log(btn.target.textContent);
+}
 
-  const computerScore = document.getElementById('computer-score');
-  computerScore.textContent = `${scores.Computer}`;
+//choiceBtns.forEach((btn => btn.addEventListener('click', btn => {
+  //gameData.playerChoice = btn.target.textContent.toLowerCase();
+  //runGame();
+  //playRound(playerChoice, getComputerChoice());
 
-  runGame();
+  // Update the text and values for the 'Result' and Score cards respectively. (Remove text outputs to another function or runGame)
+  //const resultOutput = document.getElementById('result-output');
+  //resultOutput.textContent = gameData.Result;
+
+  //const playerScore = document.getElementById('player-score');
+  //playerScore.textContent = `${gameData.Player}`;
+
+  //const computerScore = document.getElementById('computer-score');
+  //computerScore.textContent = `${gameData.Computer}`;
+
+  //runGame();
   
-})))
+//})))
 
 
-// Run the game until 5 rounds and then display the relevant message, alongside a reset button.
-
+// Run the game until 5 rounds and then display the relevant message, stop eventListener for
+// the rock, paper, scissor buttons and show a reset button. 
 function runGame() {
-  if (scores.Player == 5) {
+
+  playRound(gameData.playerChoice, getComputerChoice());
+
+  if (gameData.Player == 5) {
     const winMessage = document.getElementById('winner');
     winMessage.textContent = 'Congratulations! \u{1F91D} You\'ve won!! \u{1F947}';
   }
-  else if (scores.Computer == 5) {
+  else if (gameData.Computer == 5) {
     const winMessage = document.getElementById('winner');
     winMessage.textContent = 'Commiserations. You\'ve lost \u{1F641}';
-  }
-  return
+
+  } 
+
+  const resultOutput = document.getElementById('result-output');
+  resultOutput.textContent = gameData.Result;
+
+  const playerScore = document.getElementById('player-score');
+  playerScore.textContent = `${gameData.Player}`;
+
+  const computerScore = document.getElementById('computer-score');
+  computerScore.textContent = `${gameData.Computer}`;
 }
+
+// Append reset button to final outcome section.
+
+
+
 
 // Plays one round of the game, check the outcome, return the outcome text and scores in array.
 // Replayed if both players have the same choice, as only wins are counted.
@@ -57,22 +83,21 @@ function playRound(player, computer) {
     return;
   }
   else if (computer == 'rock' && player == 'scissor') {
-    ++ scores.Computer; scores.Result = 'Rock beats scissor. Computer wins!';
-    return 
+    ++ gameData.Computer; gameData.Result = 'Rock beats scissor. Computer wins!';
   }
   else if (computer == 'rock' && player == 'paper') {
-    ++ scores.Player; scores.Result = 'Paper beats rock. You win!!';
+    ++ gameData.Player; gameData.Result = 'Paper beats rock. You win!!';
   }
   else if (computer == 'scissor' && player == 'rock') {
-    ++ scores.Player; scores.Result = 'Rock beats scissor. You win!!';
+    ++ gameData.Player; gameData.Result = 'Rock beats scissor. You win!!';
   }
   else if (computer == 'scissor' && player == 'paper') {
-    ++ scores.Computer; scores.Result = 'Scissor beats paper. Computer wins!';
+    ++ gameData.Computer; gameData.Result = 'Scissor beats paper. Computer wins!';
   }
   else if (computer == 'paper' &&  player == 'scissor') {
-    ++ scores.Player; scores.Result = 'Scissor beats paper. You win!!';
+    ++ gameData.Player; gameData.Result = 'Scissor beats paper. You win!!';
   }
   else if (computer == 'paper' &&  player == 'rock') {
-    ++ scores.Computer; scores.Result = 'Paper beats rock. Computer wins!';
+    ++ gameData.Computer; gameData.Result = 'Paper beats rock. Computer wins!';
   }
 }
