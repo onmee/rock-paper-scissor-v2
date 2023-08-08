@@ -10,11 +10,11 @@ function getComputerChoice() {
 
 // Event listener for each of the choice buttons.
 const choiceBtns = document.querySelectorAll(".choice-btns button");
-
 choiceBtns.forEach(btn => btn.addEventListener('click', onClick));
 
 function onClick(btn) {
   gameData.playerChoice = btn.target.textContent.toLowerCase();
+  runGame();
   //console.log(btn.target.textContent);
 }
 
@@ -38,8 +38,8 @@ function onClick(btn) {
 //})))
 
 
-// Run the game until 5 rounds and then display the relevant message, stop eventListener for
-// the rock, paper, scissor buttons and show a reset button. 
+// Run the game until 5 rounds and then display the relevant message, remove eventListeners and
+// and show a reset button. 
 function runGame() {
 
   playRound(gameData.playerChoice, getComputerChoice());
@@ -47,10 +47,12 @@ function runGame() {
   if (gameData.Player == 5) {
     const winMessage = document.getElementById('winner');
     winMessage.textContent = 'Congratulations! \u{1F91D} You\'ve won!! \u{1F947}';
+    choiceBtns.forEach(btn => btn.removeEventListener('click', onClick));
   }
   else if (gameData.Computer == 5) {
     const winMessage = document.getElementById('winner');
     winMessage.textContent = 'Commiserations. You\'ve lost \u{1F641}';
+    choiceBtns.forEach(btn => btn.removeEventListener('click', onClick));
 
   } 
 
