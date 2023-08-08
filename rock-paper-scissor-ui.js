@@ -17,8 +17,7 @@ function onClick(btn) {
   runGame();
 }
 
-
-// Run the game until 5 wins and then display the relevant message, remove eventListeners and
+// Run the game until 5 wins and then display the relevant winning message, remove eventListeners and
 // and show a reset button. 
 function runGame() {
   playRound(gameData.playerChoice, getComputerChoice());
@@ -27,11 +26,13 @@ function runGame() {
     const winMessage = document.getElementById('winner');
     winMessage.textContent = 'Congratulations! \u{1F91D} You\'ve won!! \u{1F947}';
     choiceBtns.forEach(btn => btn.removeEventListener('click', onClick));
+    replayButton()
   }
   else if (gameData.Computer == 5) {
     const winMessage = document.getElementById('winner');
     winMessage.textContent = 'Commiserations. You\'ve lost \u{1F641}';
     choiceBtns.forEach(btn => btn.removeEventListener('click', onClick));
+    replayButton()
   }
   textOutput(); 
 }
@@ -39,8 +40,7 @@ function runGame() {
 // Plays one round of the game, check the outcome, return the outcome text and scores in array.
 // Replayed if both players have the same choice, as only wins are counted.
 function playRound(player, computer) {
-  // Update the text in the 'Computer' card.
-  const compOutput = document.getElementById('computer-choice');
+  const compOutput = document.getElementById('computer-choice'); // Update the text in the 'Computer' card.
   compOutput.textContent = computer.toUpperCase();
 
   if (player == computer) {
@@ -68,8 +68,6 @@ function playRound(player, computer) {
   }
 }
 
-// Append reset button to final outcome section.
-
 // Scores and results card text outputs.
 function textOutput() {
   const resultOutput = document.getElementById('result-output');
@@ -80,4 +78,19 @@ function textOutput() {
 
   const computerScore = document.getElementById('computer-score');
   computerScore.textContent = `${gameData.Computer}`;
+}
+
+// Append replay button to final output section.
+function replayButton() {
+  const replayGame = document.querySelector('#replay');
+  const replayBtn = document.createElement('button');
+
+  replayBtn.classList.add('pushable');
+  replayGame.appendChild(replayBtn);
+
+  const span = document.createElement('span');
+
+  span.classList.add('front');
+  span.textContent = 'Replay';
+  replayBtn.appendChild(span);
 }
