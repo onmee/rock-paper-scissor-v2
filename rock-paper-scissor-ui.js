@@ -26,13 +26,13 @@ function runGame() {
     const winMessage = document.getElementById('winner');
     winMessage.textContent = 'Congratulations! \u{1F91D} You\'ve won!! \u{1F947}';
     choiceBtns.forEach(btn => btn.removeEventListener('click', onClick));
-    replayButton()
+    replayButton();
   }
   else if (gameData.Computer == 5) {
     const winMessage = document.getElementById('winner');
     winMessage.textContent = 'Commiserations. You\'ve lost \u{1F641}';
     choiceBtns.forEach(btn => btn.removeEventListener('click', onClick));
-    replayButton()
+    replayButton();
   }
   textOutput(); 
 }
@@ -86,6 +86,10 @@ function replayButton() {
   const replayBtn = document.createElement('button');
 
   replayBtn.classList.add('pushable');
+  //Reloads the page, in effect restarting the game.
+  replayBtn.addEventListener('click', function() {
+    location.reload();
+  })
   replayGame.appendChild(replayBtn);
 
   const span = document.createElement('span');
